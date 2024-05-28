@@ -20,7 +20,10 @@ app_license = "MIT"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "demowarehouse/public/scss/website"
-
+from erpnext.stock.doctype.serial_no import serial_no
+from demowarehouse.demowarehouse.serial_no import update_args_for_serial_no, auto_make_serial_nos
+serial_no.update_args_for_serial_no = update_args_for_serial_no
+serial_no.auto_make_serial_nos = auto_make_serial_nos
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
 # webform_include_css = {"doctype": "public/css/doctype.css"}
