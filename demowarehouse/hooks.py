@@ -32,7 +32,7 @@ serial_no.auto_make_serial_nos = auto_make_serial_nos
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+# doctype_js = {"Serial No" : "public/js/serial_no.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -127,6 +127,11 @@ serial_no.auto_make_serial_nos = auto_make_serial_nos
 #		"on_cancel": "method",
 #		"on_trash": "method"
 #	}
+# }
+# doc_events = {
+#     "Serial No" : {
+#         'after_insert' : "demowarehouse.demowarehouse.serial_no.after_insert"
+#     }
 # }
 
 # Scheduled Tasks
