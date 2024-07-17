@@ -14,6 +14,8 @@ def execute(filters=None):
 	if filters.get('to_date'):
 		cond += f" and pr.posting_date <= '{filters.get('to_date')}'"
 
+	cond = f" and pri.custom_workflow_code in ('I1U', 'W1U', 'INS')"
+
 	data = frappe.db.sql(f"""
 		Select pr.set_warehouse,
 		pr.supplier,
@@ -29,8 +31,8 @@ def execute(filters=None):
 		pr.custom_owner_category,
 		pr.supplier as owner_group,
 		pri.item_code,
+		item.description,
 		item.custom_inventory_user_name,
-		pri.description,
 		item.custom_manufacturer_item_code,
 		item.custom_brand_code,
 		item.custom_brand_name,
@@ -75,7 +77,7 @@ def execute(filters=None):
 		From `tabPurchase Receipt` as pr
 		Left Join `tabPurchase Receipt Item` as pri On pri.parent = pr.name
 		Left Join `tabItem` as item ON pri.item_code = item.name
-		Where pr.docstatus = 1 {cond}
+		Where pr.docstatus = 1 and pr.status != 'Return Issued' and pr.is_return  = 0 {cond}
 	""",as_dict =1 )
 
 	final_data = []
@@ -195,7 +197,7 @@ def get_columns(filters):
 			'width': 200
 		},
 		{
-			'fieldname': 'custom_current_classification_code',
+			'fieldname': 'custom_category',
 			'label': _('CURRENT_CLASSIFICATION_CODE'),
 			'fieldtype': 'Data',
 			'width': 200

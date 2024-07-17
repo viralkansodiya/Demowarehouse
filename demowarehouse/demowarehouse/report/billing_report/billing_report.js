@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Shipping report"] = {
+frappe.query_reports["Billing Report"] = {
 	"filters": [
 		{
 			'fieldname':'from_date',
@@ -19,11 +19,10 @@ frappe.query_reports["Shipping report"] = {
 			'default':frappe.datetime.get_today()
 		},
 		{
-			'fieldname':'custom_shipping_status',
-			'label':__('Shipping Status'),
-			'fieldtype':'Select',
-			'options':['shipped_out', 'shipment_received'],
-			'default':'shipped_out',
+			"fieldname":"supplier",
+			'label':__('OWNER_GROUP'),
+			'fieldtype':'Link',
+			'options' : "Supplier",
 			'width':100,
 		}
 	]

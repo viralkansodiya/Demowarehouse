@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-12 13:52:34.177982",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "inbound",
+  "outbound",
+  "rma",
+  "software_installation",
+  "storage_per_sq_meters",
+  "column_break_xcaol",
+  "admin_cost",
+  "basic_swap_1",
+  "basic_swap_2_usernew",
+  "cleaning_for_singapore_warehouse",
+  "packing_for_singapore_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "inbound",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Inbound",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outbound",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Outbound",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rma",
+   "fieldtype": "Float",
+   "label": "RMA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "software_installation",
+   "fieldtype": "Float",
+   "label": "Software Installation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "storage_per_sq_meters",
+   "fieldtype": "Float",
+   "label": "Storage Per Sq meters"
+  },
+  {
+   "fieldname": "column_break_xcaol",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "admin_cost",
+   "fieldtype": "Float",
+   "label": "Admin Cost"
+  },
+  {
+   "fieldname": "basic_swap_1",
+   "fieldtype": "Float",
+   "label": "Basic Swap 1"
+  },
+  {
+   "fieldname": "basic_swap_2_usernew",
+   "fieldtype": "Float",
+   "label": "Basic Swap 2 (Used/New)"
+  },
+  {
+   "fieldname": "cleaning_for_singapore_warehouse",
+   "fieldtype": "Float",
+   "label": "Cleaning for Singapore warehouse"
+  },
+  {
+   "fieldname": "packing_for_singapore_warehouse",
+   "fieldtype": "Float",
+   "label": "Packing for Singapore warehouse"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-07-12 13:52:34.177982",
+ "modified_by": "Administrator",
+ "module": "Demowarehouse",
+ "name": "Cargo Billing Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

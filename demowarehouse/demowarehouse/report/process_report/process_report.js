@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Shipping report"] = {
+frappe.query_reports["Process Report"] = {
 	"filters": [
 		{
 			'fieldname':'from_date',
@@ -17,14 +17,6 @@ frappe.query_reports["Shipping report"] = {
 			'fieldtype':'Date',
 			'width':100,
 			'default':frappe.datetime.get_today()
-		},
-		{
-			'fieldname':'custom_shipping_status',
-			'label':__('Shipping Status'),
-			'fieldtype':'Select',
-			'options':['shipped_out', 'shipment_received'],
-			'default':'shipped_out',
-			'width':100,
 		}
 	]
 };

@@ -12,6 +12,8 @@ def execute(filters=None):
 		cond += f" and pr.posting_date >= '{filters.get('from_date')}'"
 	if filters.get('to_date'):
 		cond += f" and pr.posting_date <= '{filters.get('to_date')}'"
+	if filters.get('custom_shipping_status'):
+		cond += f" and pri.custom_shipping_status = '{filters.get('custom_shipping_status')}'"
 	data = frappe.db.sql(f"""
 		Select pr.set_warehouse,
 		pr.custom_order_type,
@@ -21,12 +23,11 @@ def execute(filters=None):
 		pr.custom_ship_to_code,
 		pr.custom_ship_to_name,
 		pr.custom_date_created,
-		item.custom__item_detailed_description,
+		item.description,
 		pr.custom_date_shipped,
 		pr.customer_address as address,
 		pr.custom_date_time_shipped,
 		pri.item_code,
-		pri.description,
 		item.custom_family_name,
 		item.custom_sub_family_name,
 		item.custom_manufacturer_item_code,
@@ -152,7 +153,7 @@ def execute(filters=None):
 			'width': 150
 		},
 		{
-			'fieldname': 'custom__item_detailed_description',
+			'fieldname': 'description',
 			'label': _('ITEM_DESCRIPTION'),
 			'fieldtype': 'Data',
 			'width': 150
