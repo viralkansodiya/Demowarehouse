@@ -61,7 +61,8 @@ def get_data(filters):
 	stg_per_met = []
 	for row in data:
 		if not row.is_return:
-			inbound.append(row.total_qty)
+			total_qty  = get_inbound_qty(row.name)
+			inbound.append(total_qty)
 		if row.is_return:
 			outbound.append(row.total_qty)
 			stg_per_met.append(row.total_qty)
@@ -144,4 +145,15 @@ def get_data(filters):
 	return columns , res
 
 
-
+def get_inbound_qty(pr):
+	data = frappe.db.sql(f"""
+						Select pri.qty
+						From `tabPurchase Receipt Item` as pri
+						Where pri.parent = '{pr}' and docstatus = 1 
+	""", as_dict=1)
+	total_qty = 0
+	if data:
+		for row in data:
+			total_qty += row.qty
+		return total_qty
+	return 0 
