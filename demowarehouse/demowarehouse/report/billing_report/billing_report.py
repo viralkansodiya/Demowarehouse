@@ -127,14 +127,14 @@ def get_data(filters):
 
 	res.append({
 		"charges": "Storage Per Sq Meters", 
-		"amount" : 1 * doc.storage_per_sq_meters * -1, 
+		"amount" : 1 * doc.storage_per_sq_meters , 
 		'qty' : 1, 
 		"rate" : doc.storage_per_sq_meters
 		})
 	
 	res.append({
 		"charges": "Admin Cost", 
-		"amount" : 1 * doc.admin_cost * -1, 
+		"amount" : 1 * doc.admin_cost , 
 		'qty' : 1 , 
 		"rate" : doc.admin_cost
 		})
