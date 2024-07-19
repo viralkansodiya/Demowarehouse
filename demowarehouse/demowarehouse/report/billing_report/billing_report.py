@@ -53,7 +53,7 @@ def get_data(filters):
 			for d in vr_data.get('row_changed'):
 				if d[0] == "items":
 					for r in d[3]:
-						if r[0] in ["custom_workflow_code", "custom_preset_workflow_code"] and r[-1] == "I1W":
+						if r[0] in ["custom_workflow_code", "custom_preset_workflow_code"] and (r[-1] == "I1W"):
 							I1W_charges_data.append(d)
 
 	inbound = []
