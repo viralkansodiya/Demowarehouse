@@ -25,7 +25,7 @@ def get_data(filters):
 	data = frappe.db.sql(f"""
 			Select pr.name , pr.is_return , pr.total_qty
 			From `tabPurchase Receipt` as pr
-			Where pr.docstatus = 1 {cond}
+			Where pr.docstatus = 1  {cond}
 	""", as_dict = 1)
 
 	pr_data_map = {}
@@ -127,15 +127,15 @@ def get_data(filters):
 
 	res.append({
 		"charges": "Storage Per Sq Meters", 
-		"amount" : sum(stg_per_met) * doc.storage_per_sq_meters * -1, 
-		'qty' : sum(stg_per_met) * -1, 
+		"amount" : 1 * doc.storage_per_sq_meters * -1, 
+		'qty' : 1, 
 		"rate" : doc.storage_per_sq_meters
 		})
 	
 	res.append({
 		"charges": "Admin Cost", 
-		"amount" : sum(stg_per_met) * doc.admin_cost * -1, 
-		'qty' : sum(stg_per_met) * -1, 
+		"amount" : 1 * doc.admin_cost * -1, 
+		'qty' : 1 , 
 		"rate" : doc.admin_cost
 		})
 
