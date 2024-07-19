@@ -62,6 +62,7 @@ def get_data(filters):
 		pri.custom_width,
 		pr.custom_po_uploaded,
 		pr.custom_default_activity,
+		pri.custom_preset_workflow_code,
 		pr.custom__first_activity,
 		pr.custom__damage_code_inventory,
 		pri.custom_workflow_code,
@@ -142,6 +143,12 @@ def get_columns(filters):
 		{
 			'fieldname': 'custom_workflow_code',
 			'label': _('WORKFLOW_CODE'),
+			'fieldtype': 'Data',
+			'width': 150
+		},
+		{
+			'fieldname': 'custom_preset_workflow_code',
+			'label': _('PreSet WORKFLOW_CODE'),
 			'fieldtype': 'Data',
 			'width': 150
 		},
