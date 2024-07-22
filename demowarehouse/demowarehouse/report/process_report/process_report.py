@@ -55,7 +55,7 @@ def get_data(filters):
 		Left Join `tabPurchase Receipt Item` as pri ON pri.parent = pr.name
 		Left Join `tabItem` as item ON pri.item_code = item.name
 		left join `tabCurrent Activity` as ca ON ca.name = pr.custom_current_activity
-		Where pr.docstatus = 1 {cond}
+		Where pr.docstatus = 1 and is_return != 1 {cond}
 	""", as_dict= 1)
 
 	warehouse = frappe.db.sql(f"""
