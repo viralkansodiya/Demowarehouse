@@ -3,6 +3,7 @@
 
 import frappe
 import json
+from frappe.utils import flt
 
 
 def execute(filters=None):
@@ -70,11 +71,20 @@ def get_data(filters):
 
 	doc = frappe.get_doc("Cargo Billing Settings", None)
 
+	cond = ''
+	if filters.get("from_date"):
+		cond += f" and pr.posting_date >= '{filters.get('from_date')}'"
+
+	if filters.get("to_date"):
+		cond += f" and pr.posting_date <= '{filters.get('to_date')}'"
+	if filters.get("supplier"):
+		cond += f" and pr.supplier = '{filters.get('supplier')}'"
+
 	rme_charges = frappe.db.sql(f"""
 			Select sum(qty) as qty
 			From `tabPurchase Receipt Item` as pri
 			Left Join `tabPurchase Receipt` as pr On pr.name = pri.parent
-			Where pr.docstatus = 1 and pr.is_return != 1 and pri.custom_workflow_code = 'I1W'
+			Where pr.docstatus = 1 and pr.is_return != 1 and pri.custom_workflow_code = 'I1W' {cond}
 	""",as_dict = 1)
 	rme = 0
 	if rme_charges:
@@ -124,7 +134,7 @@ def get_data(filters):
 
 	res.append({
 		"charges": "RMA Charges", 
-		"amount" : rme * doc.rma, 
+		"amount" : flt(rme) * flt(doc.rma) if flt(rme) else 0, 
 		'qty' : rme , 
 		"rate" : doc.rma
 	})
