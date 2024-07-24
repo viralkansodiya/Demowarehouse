@@ -46,6 +46,7 @@ def get_data(filters):
 		if pr_data_map.get(row.docname):
 			vr_final_data.append(row)
 	I1W_charges_data = []
+	ram_charges = []
 
 	for row in vr_final_data:
 		vr_data = json.loads(row.data)
@@ -69,6 +70,15 @@ def get_data(filters):
 
 	doc = frappe.get_doc("Cargo Billing Settings", None)
 
+	rme_charges = frappe.db.sql(f"""
+			Select sum(qty) as qty
+			From `tabPurchase Receipt Item` as pri
+			Left Join `tabPurchase Receipt` as pr On pr.name = pri.parent
+			Where pr.docstatus = 1 and pr.is_return != 1 and pri.custom_workflow_code = 'I1W'
+	""",as_dict = 1)
+	rme = 0
+	if rme_charges:
+		rme = rme_charges[0].get('qty')
 	columns = [
 		{
 			"fieldname" : "charges",
@@ -114,8 +124,8 @@ def get_data(filters):
 
 	res.append({
 		"charges": "RMA Charges", 
-		"amount" : len(I1W_charges_data) * doc.rma, 
-		'qty' : len(I1W_charges_data) , 
+		"amount" : rme * doc.rma, 
+		'qty' : rme , 
 		"rate" : doc.rma
 	})
 
