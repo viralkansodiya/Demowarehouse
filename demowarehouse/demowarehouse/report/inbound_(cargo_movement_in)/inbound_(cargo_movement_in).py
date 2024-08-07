@@ -49,8 +49,8 @@ def get_data(filters):
 			"width":150,
 		},
 		{
-			"fieldname":"custom_warehouse_description",
-			"label":"Sub Family Name",
+			"fieldname":"custom_sub_family_name",
+			"label":"SUB FAMILY NAME",
 			"fieldtype":"Data",
 			"width":150,
 		},
