@@ -13,9 +13,9 @@ def execute(filters=None):
 def get_data(filters):
 	cond = ''
 	if filters.get('from_date'):
-		cond += f" and pr.posting_date >= '{filters.get('from_date')}'"
+		cond += f" and pr.custom_date_inventoried >= '{filters.get('from_date')}'"
 	if filters.get('to_date'):
-		cond += f" and pr.posting_date <= '{filters.get('to_date')}'"
+		cond += f" and pr.custom_date_inventoried <= '{filters.get('to_date')}'"
 	if filters.get("owner_code"):
 		cond += f" and pr.custom_owner_code = '{filters.get('owner_code')}'"
 
@@ -28,7 +28,7 @@ def get_data(filters):
 			pr.customer_batch,
 			pri.qty,
 			w.custom_warehouse_description,
-			pr.posting_date,
+			pr.custom_date_inventoried,
 			pri.custom_category
 			From `tabPurchase Receipt` as pr
 			Left Join `tabPurchase Receipt Item` as pri on pri.parent = pr.name
@@ -83,7 +83,7 @@ def get_data(filters):
 			"width":150,
 		},
 		{
-			"fieldname":"posting_date",
+			"fieldname":"custom_date_inventoried",
 			"label":"DATE_INVENTORIED",
 			"fieldtype":"Date",
 			"width":150,
