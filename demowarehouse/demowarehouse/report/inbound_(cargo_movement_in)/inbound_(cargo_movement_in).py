@@ -16,12 +16,15 @@ def get_data(filters):
 		cond += f" and pr.posting_date >= '{filters.get('from_date')}'"
 	if filters.get('to_date'):
 		cond += f" and pr.posting_date <= '{filters.get('to_date')}'"
+	if filters.get("owner_code"):
+		cond += f" and pr.custom_owner_code = '{filters.get('owner_code')}'"
 
 	data = frappe.db.sql(f"""
 			Select pr.name,
 			pri.warehouse,
 			item.custom_sub_family_name,
 			pri.serial_no,
+			pr.custom_owner_code,
 			pr.customer_batch,
 			pri.qty,
 			w.custom_warehouse_description,
@@ -51,6 +54,12 @@ def get_data(filters):
 		{
 			"fieldname":"custom_sub_family_name",
 			"label":"SUB FAMILY NAME",
+			"fieldtype":"Data",
+			"width":150,
+		},
+		{
+			"fieldname":"custom_owner_code",
+			"label":"OWNER_CODE",
 			"fieldtype":"Data",
 			"width":150,
 		},

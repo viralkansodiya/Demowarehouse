@@ -17,6 +17,13 @@ frappe.query_reports["Inbound (Cargo Movement In)"] = {
 			'fieldtype':'Date',
 			'width':100,
 			'default':frappe.datetime.get_today()
+		},
+		{
+			'fieldname':'owner_code',
+			'label':__('OWNER_CODE'),
+			'fieldtype':'Select',
+			'options':["", "DBANK", "AZENECA"],
+			"width" : 100
 		}
 	]
 };
