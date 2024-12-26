@@ -229,7 +229,7 @@ def get_columns(filters):
 			'width': 150
 		},
 		{
-			'fieldname': 'DATE_RECEIVED',
+			'fieldname': 'posting_date',
 			'label': _('DATE_RECEIVED'),
 			'fieldtype': 'Date',
 			'width': 150
