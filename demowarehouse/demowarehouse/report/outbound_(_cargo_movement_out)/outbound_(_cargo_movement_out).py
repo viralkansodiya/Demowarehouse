@@ -55,9 +55,9 @@ def get_data(filters):
 			'width': 150
 		},
 		{
-			'fieldname': 'qty',
-			'label': _('QUANTITY'),
-			'fieldtype': 'Float',
+			'fieldname': 'serial_no',
+			'label': _('MSN'),
+			'fieldtype': 'Data',
 			'width': 150
 		},
 		{
@@ -70,6 +70,12 @@ def get_data(filters):
 			'fieldname': 'custom_order_refer',
 			'label': _('AWB / GCN #'),
 			'fieldtype': 'Data',
+			'width': 150
+		},
+		{
+			'fieldname': 'qty',
+			'label': _('QUANTITY'),
+			'fieldtype': 'Float',
 			'width': 150
 		},
 		{
