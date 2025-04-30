@@ -17,6 +17,14 @@ frappe.query_reports["Outbound ( Cargo Movement Out)"] = {
 			'fieldtype':'Date',
 			'width':100,
 			'default':frappe.datetime.get_today()
+		},
+		{
+			'fieldname':'owner_code',
+			'label':__('Owner Code'),
+			'fieldtype':'Select',
+			'options' : " \nDBANK\nAZENECA",
+			'width':100,
+			'default':frappe.datetime.get_today()
 		}
 	]
 };
