@@ -42,7 +42,9 @@ def execute(filters=None):
 		pr.supplier as owner_group,
 		pr.custom_owner_code,
 		pr.custom_owner_category,
-		pri.custom_workflow_code
+		pri.custom_workflow_code,
+		pr.custom_dc_date,
+		pr.custom_delivered_date
 		From `tabPurchase Receipt` as pr
 		Left Join `tabPurchase Receipt Item` as pri ON pri.parent = pr.name
 		Left Join `tabItem` as item ON pri.item_code = item.name
@@ -102,6 +104,12 @@ def execute(filters=None):
 			'label': _('ORDER_REFERENCE'),
 			'fieldtype': 'Data',
 			'width': 150
+		},
+		{
+			"fieldname": "custom_dc_date",
+			"label": _('DC Date'),
+			"fieldtype": "Data",
+			"width": 150
 		},
 		{
 			'fieldname': 'custom_tracking_number',
@@ -256,6 +264,12 @@ def execute(filters=None):
 			'fieldtype': 'Data',
 			'width': 100
 		},
+		{
+			"fieldname": "custom_delivered_date",
+			"label": _('DELIVERED DATE'),
+			"fieldtype": "Datetime",
+			'width': 120
+		}
 		
 
 	]
