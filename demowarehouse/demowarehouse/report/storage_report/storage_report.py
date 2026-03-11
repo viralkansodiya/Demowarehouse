@@ -48,6 +48,7 @@ def execute(filters=None):
 		item.custom_end_of_support_date,
 		pr.posting_date as DATE_RECEIVED,
 		pr.custom_date_inventoried,
+		pr.custom_date_time_inventoried,
 		pri.qty,
 		pri.serial_no,
 		pri.custom_atn,
