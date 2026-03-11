@@ -107,7 +107,7 @@ def execute(filters=None):
 		},
 		{
 			"fieldname": "custom_dc_date",
-			"label": _('DC Date'),
+			"label": _('DC_DATE'),
 			"fieldtype": "Data",
 			"width": 150
 		},
