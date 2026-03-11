@@ -245,13 +245,13 @@ def get_columns(filters):
 			'width': 150
 		},
 		{
-			'fieldname': 'custom_date_stock_entry',
+			'fieldname': 'custom_date_inventoried',
 			'label': _('DATE_STOCK_ENTRY'),
 			'fieldtype': 'Date',
 			'width': 150
 		},
 		{
-			'fieldname': 'custom_date_time_stock_entry',
+			'fieldname': 'custom_date_time_inventoried',
 			'label': _('DATE_TIME_STOCK_ENTRY'),
 			'fieldtype': 'Datetime',
 			'width': 150
